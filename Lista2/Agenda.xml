@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_111" class="java.beans.XMLDecoder">
+ <object class="exercicio6.AgendaTelefone">
+  <void property="apelido">
+   <string>Ju1</string>
+  </void>
+  <void property="nome">
+   <string>Jujuba1</string>
+  </void>
+  <void property="telefone">
+   <string>1111-1111</string>
+  </void>
+ </object>
+ <object class="exercicio6.AgendaTelefone">
+  <void property="apelido">
+   <string>Ju2</string>
+  </void>
+  <void property="nome">
+   <string>Jujuba2</string>
+  </void>
+  <void property="telefone">
+   <string>2222-2222</string>
+  </void>
+ </object>
+ <object class="exercicio6.AgendaTelefone">
+  <void property="apelido">
+   <string>Ju3</string>
+  </void>
+  <void property="nome">
+   <string>Jujuba3</string>
+  </void>
+  <void property="telefone">
+   <string>3333-3333</string>
+  </void>
+ </object>
+</java>

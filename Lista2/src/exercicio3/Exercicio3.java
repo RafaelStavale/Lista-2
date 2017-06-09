@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package exercicio3;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,6 +5,8 @@ import lombok.Setter;
 /**
  *
  * @author Thaïs Simões
+ * Classe que principal de uma livraria onde é adicionado os valores referentes 
+ * a um livro
  */
  
 public class Exercicio3 {

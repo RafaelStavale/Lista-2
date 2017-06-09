@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package exercicio2;
 
 import java.util.List;
@@ -12,6 +7,7 @@ import java.util.function.IntFunction;
 /**
  *
  * @author Thaïs Simões
+ * Classe com vários expressões lambda.
  */
 public class Exercicio2 {
     public static void main(String[] args){

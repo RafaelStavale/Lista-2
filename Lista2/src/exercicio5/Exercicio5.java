@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package exercicio5;
 
 import java.io.FileNotFoundException;
@@ -14,7 +9,8 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author tsuba
+ * @author Thaïs Simões
+ * Classe responsável pela escrita dos dados da agenda em um arquivo binário
  */
 public class Exercicio5 {
     public static void main (String[] args) throws IOException{
