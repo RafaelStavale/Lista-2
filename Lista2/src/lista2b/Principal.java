@@ -1,8 +1,10 @@
 package lista2b;
 
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 /**
@@ -14,16 +16,18 @@ import javax.swing.JPanel;
  * Ela herda de JPanel e implementa uma classe interface chamada Runnable, necessária
  * para o uso de Threads.
  */
-public class JDesenho extends JPanel implements Runnable{
+public class Principal extends JPanel implements Runnable{
     double posicaoX =400;
-    boolean moveEsquerda = false;
+    boolean moverNuvemParaEsquerda = false;
     private boolean[] key_states = new boolean[256];
-    boolean andarBoneco=false;
-    
+    boolean andarBonecoEsquerda=false;
+    Cenario cenario = new Cenario();
+    Image boneco;
+    Personagem personagem;    
     /**
     Construtor
     */
-    JDesenho(){
+    Principal(){
         setDoubleBuffered(true);
         setFocusable(true);
         load();
@@ -31,20 +35,18 @@ public class JDesenho extends JPanel implements Runnable{
     }
     
     /**
-     *Método responsável pela pintura em tela.
+     * Método responsável pela pintura em tela.
      * @param g do tipo Graphics - Classe de formas primitas.
      */
     @Override
     protected void paintComponent(Graphics g) {
-    Cenario cenario = new Cenario();
+    
+    
     if (posicaoX < 160) {
         cenario.ceu("#0000", g);
     }
     else {
         cenario.ceu("#98d1fa", g);
-    }
-    if(andarBoneco){
-        cenario.boneco(true, g, this);
     }
     cenario.arvoreCaule("#74614f", g);
     cenario.arvoreCopa("#027b12", g);
@@ -55,11 +57,11 @@ public class JDesenho extends JPanel implements Runnable{
     cenario.portaCasa("#74614f", g);
     cenario.janelaCasa("#c4fffd", g);
     cenario.nuvem(g, (int)posicaoX);   
+    personagem.draw(g);
     
-    
-     }  
+    }
     /**
-     *Método responsável pela atualização de tela e repitura
+     *Método responsável pela atualização de tela e sua repintura
      */
 
     @Override
@@ -85,6 +87,7 @@ public class JDesenho extends JPanel implements Runnable{
      */
     private void load(){
         addKeyListener(new KeyboardAdapter());
+        personagem = new Personagem();
         
     }
     /*
@@ -93,40 +96,50 @@ public class JDesenho extends JPanel implements Runnable{
     */
     public void update(double dt){
         
-        if((posicaoX >= 10)&&(moveEsquerda)){
+        if((posicaoX >= 10)&&(moverNuvemParaEsquerda)){
             posicaoX =  posicaoX - (50*dt);
         }
-        else if((posicaoX < 500)){
-                    
-            moveEsquerda= false;
+        else if((posicaoX < 500)){       
+            moverNuvemParaEsquerda= false;
             
          }
-        if ((posicaoX < 500)&&!(moveEsquerda)){
+        if ((posicaoX < 500)&&!(moverNuvemParaEsquerda)){
             posicaoX =  posicaoX + (50*dt);
             
         }
         else if (posicaoX > 10){
-            moveEsquerda = true;
+            moverNuvemParaEsquerda = true;
 
         }
-        if (key_states[KeyEvent.VK_LEFT]){
-            andarBoneco = true;
+         if (key_states[KeyEvent.VK_LEFT]){
+            personagem.moveBonecoEsquerda(1);
         }
+         if (key_states[KeyEvent.VK_RIGHT]){
+            personagem.moveBonecoDireita(1);
+        }
+         if(!(key_states[KeyEvent.VK_RIGHT]) && !(key_states[KeyEvent.VK_LEFT])){
+             personagem.setContTecla(0);
+         }
+    }
+    
+    
+    
+       private class KeyboardAdapter extends KeyAdapter {
+        @Override
+        public void keyReleased(KeyEvent e) {
+            key_states[e.getKeyCode()] = false;
+        }
+        
+        @Override
+        public void keyPressed(KeyEvent e) {
+            key_states[e.getKeyCode()] = true;
+        }
+    
+   }
         
     }
     
     /*
     Classe responsável pelo reconhecimento das teclas pressionadas
     */
-    public class KeyboardAdapter extends KeyAdapter{
-        public void KeyReleased(KeyEvent e){
-            key_states[e.getKeyCode()] = false;
-        }
-         public void KeyPressed(KeyEvent e){
-            key_states[e.getKeyCode()] = true;
-        }
-    
-}
-    }
-    
   

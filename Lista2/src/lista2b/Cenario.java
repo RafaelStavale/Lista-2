@@ -11,13 +11,11 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author tsuba
+ * @author Thaïs Simões
+ * Classe responsável pela criação do cenários. Posicionamento, cores e tamanhos
  */
 public class Cenario{
-    
-    Image boneco;
-        
-    
+      
     public void nuvem(Graphics g, int posicaoX){
         Graphics2D g2d = (Graphics2D)g;
         g2d.setColor(Color.white);
@@ -83,16 +81,5 @@ public class Cenario{
         g2d.fillOval(50, 50, 110, 110);
     }
         
-        public void boneco(boolean lado, Graphics g, ImageObserver obs){
-            Graphics2D g2d = (Graphics2D)g;
-            
-            if(lado){
-                boneco = new ImageIcon(this.getClass().getResource("/imagens_hero_2d/Hero_Walk_01.png")).getImage();
-                g2d.drawImage(boneco, 300,360, obs);
-            }
-            else{
-                boneco = new ImageIcon(this.getClass().getResource("/imagens_hero_2d/Hero_Walk_05.png")).getImage();
-                g2d.drawImage(boneco, 300,360, obs);
-            }
-        }
+       
 }
